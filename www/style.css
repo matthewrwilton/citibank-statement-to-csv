@@ -1,0 +1,11 @@
+.content {
+	margin:0 auto;
+	max-width:800px;
+	width:100%;
+}
+.file-picker {
+	width:100%;
+}
+.convert-button-container {
+	text-align:center;
+}
