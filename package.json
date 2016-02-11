@@ -1,0 +1,21 @@
+{
+  "name": "csv-citibank-statement",
+  "version": "1.0.0",
+  "description": "Parse a Citibank credit card statement into a tab separated CSV file.",
+  "dependencies": {},
+  "devDependencies": {
+    "entry-loader": "^0.1.0",
+    "pdfjs-dist": "^1.4.55",
+    "webpack": "^1.12.13"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewrwilton/csv-citibank-statement.git"
+  },
+  "author": "Matthew Wilton <matthewrwilton@gmail.com> (https://github.com/matthewrwilton)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/matthewrwilton/csv-citibank-statement/issues"
+  },
+  "homepage": "https://github.com/matthewrwilton/csv-citibank-statement#readme"
+}
