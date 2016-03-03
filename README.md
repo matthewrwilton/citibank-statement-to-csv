@@ -1,3 +1,6 @@
+# WIP
+This project is work in progress.
+
 # csv-citibank-statement
 Parse a Citibank credit card statement into a tab separated CSV file.
 
