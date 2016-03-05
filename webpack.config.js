@@ -9,12 +9,15 @@ module.exports = {
     publicPath: './www',
     filename: 'bundle.js'
   },
+  externals: {
+    "jquery": "jQuery"
+  },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
+    /*new webpack.optimize.UglifyJsPlugin({
       compressor: {
         screw_ie8: true,
         warnings: false
       }
-    })
+    })*/
   ]
 };
