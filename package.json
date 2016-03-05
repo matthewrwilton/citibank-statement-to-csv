@@ -5,7 +5,7 @@
   "dependencies": {},
   "devDependencies": {
     "entry-loader": "^0.1.0",
-    "pdfjs-dist": "^1.4.55",
+    "pdfjs-dist": "^1.4.124",
     "webpack": "^1.12.13"
   },
   "repository": {
