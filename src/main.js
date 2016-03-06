@@ -13,8 +13,14 @@ function loadFileTest() {
 document.getElementById("convert-to-csv-button").onclick = loadFileTest;
 
 /*
- * load PDF file
- * convert PDF into HTML (get text layer)
- * parse text layer to extract statement items
+ * // load PDF file & extract text layer
+ * var pdfReader = new PdfReader();
+ * pdfReader.read().then(function (pdf) {
+ *
+ *   // parse text layer to extract statement items
+ *   var statementParser = new StatementParser();
+ *   statementParser.parse(pdf);
+ * });
+ *
  * save statement items as CSV
  */
