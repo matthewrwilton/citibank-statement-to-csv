@@ -5,7 +5,11 @@ function loadFileTest() {
     var filePicker = $("#statement-file-picker").get(0);
     var selectedFile = filePicker.files[0];
     var localFileUrl = window.URL.createObjectURL(selectedFile);
-    PDFJS.getDocument(localFileUrl).then(function (pdfDocument) {
+	var password = $("#statement-password").get(0).value;
+    PDFJS.getDocument({
+		url: localFileUrl,
+		password: password
+	}).then(function (pdfDocument) {
         console.log('Number of pages: ' + pdfDocument.numPages);
     });
 }
