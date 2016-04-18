@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": false,
+        "sourceMap": false
+    },
+    "files": [
+    	"typings/jquery/jquery.d.ts",
+    	"typings/pdf/pdf.d.ts",
+    	"typings/pdf/pdfjs-dist.d.ts",
+    	"src/index.ts"
+    ]
+}

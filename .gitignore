@@ -5,4 +5,5 @@ node_modules
 .npm
 
 # Ignore generated JavaScript files
+src/*.js
 www/*.js
