@@ -1,16 +1,16 @@
-var webpack = require('webpack');
-var path = require('path');
+var webpack = require("webpack");
+var path = require("path");
 
 module.exports = {
   context: __dirname,
-  entry: './src/index.ts',
+  entry: "./src/index.ts",
   output: {
-    path: path.join(__dirname, './www'),
-    publicPath: './',
-    filename: 'bundle.js'
+    path: path.join(__dirname, "./www"),
+    publicPath: "./",
+    filename: "bundle.js"
   },
   externals: {
-    "jquery": "jQuery"
+    jquery: "jQuery"
   },
   module: {
     loaders: [
