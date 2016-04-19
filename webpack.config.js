@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     path: path.join(__dirname, './www'),
     publicPath: './',
@@ -11,6 +11,14 @@ module.exports = {
   },
   externals: {
     "jquery": "jQuery"
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader"
+      }
+    ]
   },
   plugins: [
     /*new webpack.optimize.UglifyJsPlugin({
