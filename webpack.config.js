@@ -15,7 +15,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts$/,
         loader: "ts-loader"
       }
     ]
@@ -27,5 +27,8 @@ module.exports = {
         warnings: false
       }
     })*/
-  ]
+  ],
+  resolve: {
+    extensions: ['', '.webpack.js', '.web.js', '.ts']
+  }
 };

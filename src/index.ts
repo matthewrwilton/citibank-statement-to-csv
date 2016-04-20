@@ -1,5 +1,6 @@
 import * as $ from "jquery";
 import * as PDFJS from "pdfjs-dist"; // Imports a global PDFJS object.
+import PdfScraper from "./PdfScraping/PdfScraper";
 
 const convertButtonSelector = "#convert-to-csv-button";
 const filePickerSelector = "#statement-file-picker";
@@ -15,7 +16,9 @@ $(convertButtonSelector).click(() => {
         password: password
     }).then(pdfDocument => {
         console.log('Number of pages: ' + pdfDocument.numPages);
-    }); 
+    });
+
+    var pdfScraper = new PdfScraper();
 });
 
 /*
