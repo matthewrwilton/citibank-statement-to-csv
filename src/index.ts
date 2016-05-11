@@ -6,19 +6,26 @@ const convertButtonSelector = "#convert-to-csv-button";
 const filePickerSelector = "#statement-file-picker";
 
 $(convertButtonSelector).click(() => {
-	var filePicker = $(filePickerSelector).get(0);
-    var selectedFile = (<HTMLInputElement>filePicker).files[0];
-    var localFileUrl = window.URL.createObjectURL(selectedFile);
-    var password = (<HTMLInputElement>$("#statement-password").get(0)).value;
+	let filePicker = $(filePickerSelector).get(0);
+    let pdfFiles = (<HTMLInputElement>filePicker).files;
+    let pdfFileLocalUrls = [];
+    for (let i = 0; i < pdfFiles.length; i++) {
+        pdfFileLocalUrls.push(window.URL.createObjectURL(pdfFiles[i]));
+    }
+
+    let password = (<HTMLInputElement>$("#statement-password").get(0)).value;
     
-    PDFJS.getDocument({
-        url: localFileUrl,
-        password: password
-    }).then(pdfDocument => {
-        console.log('Number of pages: ' + pdfDocument.numPages);
+    pdfFileLocalUrls.forEach((localFileUrl) => {
+        PDFJS.getDocument({
+            url: localFileUrl,
+            password: password
+        }).then(pdfDocument => {
+            console.log('Number of pages: ' + pdfDocument.numPages);
+        }); 
     });
 
-    var pdfScraper = new PdfScraper();
+//    var pdfScraper = new PdfScraper();
+//    var pdfTextAsHtml = pdfScraper.scrapeTextAsHtml();
 });
 
 /*
