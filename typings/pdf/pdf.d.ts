@@ -27,14 +27,6 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 */
 
-interface PDFPromise<T> {
-	isResolved(): boolean;
-	isRejected(): boolean;
-	resolve(value: T): void;
-	reject(reason: string): void;
-	then(onResolve: (promise: T) => void, onReject?: (reason: string) => void): PDFPromise<T>;
-}
-
 interface PDFTreeNode {
 	title: string;
 	bold: boolean;
@@ -90,44 +82,44 @@ interface PDFDocumentProxy {
 	 * @param number The page number to get.  The first page is 1.
 	 * @return A promise that is resolved with a PDFPageProxy.
 	 **/
-	getPage(number: number): PDFPromise<PDFPageProxy>;
+	getPage(number: number): Promise<PDFPageProxy>;
 
 	/**
 	 * TODO: return type of Promise<???>
 	 *  A promise that is resolved with a lookup table for mapping named destinations to reference numbers.
 	 **/
-	getDestinations(): PDFPromise<any[]>;
+	getDestinations(): Promise<any[]>;
 
 	/**
 	 *  A promise that is resolved with an array of all the JavaScript strings in the name tree.
 	 **/
-	getJavaScript(): PDFPromise<string[]>;
+	getJavaScript(): Promise<string[]>;
 
 	/**
 	 *  A promise that is resolved with an array that is a tree outline (if it has one) of the PDF.  @see PDFTreeNode
 	 **/
-	getOutline(): PDFPromise<PDFTreeNode[]>;
+	getOutline(): Promise<PDFTreeNode[]>;
 
 	/**
 	 * A promise that is resolved with the info and metadata of the PDF.
 	 **/
-	getMetadata(): PDFPromise<{ info: PDFInfo; metadata: PDFMetadata }>;
+	getMetadata(): Promise<{ info: PDFInfo; metadata: PDFMetadata }>;
 
 	/**
 	 * Is the PDF encrypted?
 	 **/
-	isEncrypted(): PDFPromise<boolean>;
+	isEncrypted(): Promise<boolean>;
 
 	/**
 	 * A promise that is resolved with Uint8Array that has the raw PDF data.
 	 **/
-	getData(): PDFPromise<Uint8Array>;
+	getData(): Promise<Uint8Array>;
 
 	/**
 	 * TODO: return type of Promise<???>
 	 * A promise that is resolved when the document's data is loaded.
 	 **/
-	dataLoaded(): PDFPromise<any[]>;
+	dataLoaded(): Promise<any[]>;
 
 	/**
 	 *
@@ -176,8 +168,8 @@ interface PDFAnnotations {
 	getHtmlElement(commonOjbs: any): HTMLElement; // throw new NotImplementedException()
 	getEmptyContainer(tagName: string, rect: number[]): HTMLElement; // deprecated
 	isViewable(): boolean;
-	loadResources(keys: any): PDFPromise<any>;
-	getOperatorList(evaluator: any): PDFPromise<any>;
+	loadResources(keys: any): Promise<any>;
+	getOperatorList(evaluator: any): Promise<any>;
 	// ... todo
 }
 
@@ -209,7 +201,7 @@ interface PDFViewerParams {
 /**
  * RenderTask is basically a promise but adds a cancel function to termiate it.
  **/
-interface PDFRenderTask extends PDFPromise<PDFPageProxy> {
+interface PDFRenderTask extends Promise<PDFPageProxy> {
 
 	/**
 	 * Cancel the rendering task.  If the task is currently rendering it will not be cancelled until graphics pauses with a timeout.  The promise that this object extends will resolve when cancelled.
@@ -249,7 +241,7 @@ interface PDFPageProxy {
 	/**
 	 * A promise that is resolved with an array of the annotation objects.
 	 **/
-	getAnnotations(): PDFPromise<PDFAnnotations>;
+	getAnnotations(): Promise<PDFAnnotations>;
 
 	/**
 	 * Begins the process of rendering a page to the desired context.
@@ -261,12 +253,12 @@ interface PDFPageProxy {
 	/**
 	 * A promise that is resolved with the string that is the text content frm the page.
 	 **/
-	getTextContent(): PDFPromise<TextContent>;
+	getTextContent(): Promise<TextContent>;
 
 	/**
 	 * marked as future feature
 	 **/
-	//getOperationList(): PDFPromise<>;
+	//getOperationList(): Promise<>;
 
 	/**
 	 * Destroyes resources allocated by the page.
@@ -440,21 +432,21 @@ interface PDFJSStatic {
 			pdfDataRangeTransport?: any,
 			passwordCallback?: (fn: (password: string) => void, reason: string) => string,
 			progressCallback?: (progressData: PDFProgressData) => void)
-			: PDFPromise<PDFDocumentProxy>;
+			: Promise<PDFDocumentProxy>;
 
 	getDocument(
 			source: Uint8Array,
 			pdfDataRangeTransport?: any,
 			passwordCallback?: (fn: (password: string) => void, reason: string) => string,
 			progressCallback?: (progressData: PDFProgressData) => void)
-			: PDFPromise<PDFDocumentProxy>;
+			: Promise<PDFDocumentProxy>;
 
 	getDocument(
 			source: PDFSource,
 			pdfDataRangeTransport?: any,
 			passwordCallback?: (fn: (password: string) => void, reason: string) => string,
 			progressCallback?: (progressData: PDFProgressData) => void)
-			: PDFPromise<PDFDocumentProxy>;
+			: Promise<PDFDocumentProxy>;
 
 	PDFViewer(params: PDFViewerParams): void;
 }

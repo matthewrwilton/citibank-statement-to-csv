@@ -2,7 +2,7 @@ import * as PDFJS from "pdfjs-dist"; // Imports a global PDFJS object.
 
 export default class PdfScraper {
 
-	public scrapeText(pdfFileUrl: string, password: string): any {
+	public scrapeText(pdfFileUrl: string, password: string): Promise<string[][]> {
 		return PDFJS.getDocument({
 			url: pdfFileUrl,
 			password: password
@@ -19,7 +19,7 @@ export default class PdfScraper {
 		}); 
 	}
 
-	private scrapePageText(page: PDFPageProxy): any {
+	private scrapePageText(page: PDFPageProxy): Promise<string[]> {
 		return page.getTextContent().then(textContent => {
 			return textContent.items.map(item => {
 				return item.str;
