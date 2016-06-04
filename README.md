@@ -10,10 +10,9 @@ I track my credit card charges, but PDF files are terrible for extracting data f
 ## How it works
 In the root directory of the repository.
 
-    1. tsc
-    2. webpack
-
-Open www/index.html in a web browser. The application is simply a web page, where you choose a PDF file to convert. The conversion occurs on the client using pdf.js.
+    1. Run "npm run-script build" to build the application using webpack.
+    2. Open www/index.html in a web browser.
+    3. Choose a PDF file to convert. The conversion occurs on the client using pdf.js.
 
 # Design decisions
 - This is targeted for modern browsers and compiles to ES6. No transpiling to ES5.

@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "Parse a Citibank credit card statement into a tab separated CSV file.",
   "scripts": {
+    "build": "webpack",
+    "watch": "webpack -w",
     "test": "karma start karma.conf.js --browsers=Chrome",
-    "test-debug": "karma start karma.conf.js --browsers=Chrome --single-run=false --debug --auto-watch",
+    "test-debug": "karma start karma.conf.js --browsers=Chrome --single-run=false --debug --auto-watch"
   },
   "dependencies": {},
   "devDependencies": {
