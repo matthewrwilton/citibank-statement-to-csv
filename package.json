@@ -2,9 +2,20 @@
   "name": "csv-citibank-statement",
   "version": "1.0.0",
   "description": "Parse a Citibank credit card statement into a tab separated CSV file.",
+  "scripts": {
+    "test": "karma start karma.conf.js --browsers=Chrome",
+    "test-debug": "karma start karma.conf.js --browsers=Chrome --single-run=false --debug --auto-watch",
+  },
   "dependencies": {},
   "devDependencies": {
     "entry-loader": "^0.1.0",
+    "jasmine-core": "~2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "~0.2.3",
+    "karma-cli": "~0.1.2",
+    "karma-jasmine": "~0.3.8",
+    "karma-sourcemap-loader": "~0.3.7",
+    "karma-webpack": "^1.7.0",
     "pdfjs-dist": "^1.4.124",
     "ts-loader": "^0.8.2",
     "webpack": "^1.12.13"
