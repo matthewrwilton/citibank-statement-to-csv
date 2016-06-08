@@ -18,18 +18,14 @@ describe("StatementParser", () => {
 		});
 
 		it("parses a single statement item statement", () => {
-			let input = [
-				"Transactions",
-				"Date",
-				"Transaction Details",
-				"Reference Number",
-				"Amount",
-				"Card Number 0000 0000 0000 0000",
-				"May 01",
-				"ABCDEFG",
-				"12.34",
-				"11111111111111111111111"
-			];
+			let input = transactionsHeader
+				.concat([
+					"Card Number 0000 0000 0000 0000",
+					"May 01",
+					"ABCDEFG",
+					"12.34",
+					"11111111111111111111111"
+				];
 			let target = new StatementParser();
 
 			let expected = [
@@ -41,22 +37,18 @@ describe("StatementParser", () => {
 		});
 
 		it("parses a multiple item statement", () => {
-			let input = [
-				"Transactions",
-				"Date",
-				"Transaction Details",
-				"Reference Number",
-				"Amount",
-				"Card Number 0000 0000 0000 0000",
-				"May 01",
-				"ABCDEFG",
-				"12.34",
-				"11111111111111111111111",
-				"May 02",
-				"HIJKLMN",
-				"56.78",
-				"11111111111111111111112"
-			];
+			let input = transactionsHeader
+				.concat([
+					"Card Number 0000 0000 0000 0000",
+					"May 01",
+					"ABCDEFG",
+					"12.34",
+					"11111111111111111111111",
+					"May 02",
+					"HIJKLMN",
+					"56.78",
+					"11111111111111111111112"
+				]);
 			let target = new StatementParser();
 
 			let expected = [
@@ -69,3 +61,11 @@ describe("StatementParser", () => {
 		});
 	});
 });
+
+var transactionsHeader = [
+	"Transactions",
+	"Date",
+	"Transaction Details",
+	"Reference Number",
+	"Amount"
+];
