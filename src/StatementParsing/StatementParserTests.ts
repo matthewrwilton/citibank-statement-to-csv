@@ -112,6 +112,46 @@ describe("StatementParser", () => {
 
 			expect(actual).toEqual(expected);
 		});
+
+		it("parses a multi page, multi card statement", () => {
+			let input = transactionsHeader
+				.concat([
+					"Card Number 0000 0000 0000 0000",
+					"May 01",
+					"ABCDEFG",
+					"12.34",
+					"11111111111111111111111",
+					"Card Number 1111 1111 1111 1111",
+					"May 02",
+					"HIJKLMN",
+					"56.78",
+					"11111111111111111111112"
+				])
+				.concat(pageEnding)
+				.concat(transactionsContinuedHeader)
+				.concat([
+					"May 03",
+					"OPQ",
+					"99",
+					"11111111111111111111113",
+					"Card Number 2222 2222 2222 2222",
+					"May 04",
+					"RSTUV",
+					"10000",
+					"11111111111111111111114"
+				]);
+			let target = new StatementParser();
+
+			let expected = [
+				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "12.34", "11111111111111111111111"),
+				new StatementItem("1111 1111 1111 1111", "May 02", "HIJKLMN", "56.78", "11111111111111111111112"),
+				new StatementItem("1111 1111 1111 1111", "May 03", "OPQ", "99", "11111111111111111111113"),
+				new StatementItem("2222 2222 2222 2222", "May 04", "RSTUV", "10000", "11111111111111111111114")
+			];
+			let actual = target.Parse(input);
+
+			expect(actual).toEqual(expected);
+		});
 	});
 });
 
