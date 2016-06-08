@@ -9,13 +9,16 @@ export default class StatementParser {
 
 		while (startIndex > -1)
 		{
-			let index = startIndex,
-				inTransactions = true;
+			let index = startIndex;
 			
-			while (inTransactions && index < statementText.length) {
+			while (index < statementText.length) {
 				if (this.textIsCardNumber(statementText[index])) {
 					cardNumber = this.parseCardNumber(statementText[index]);
 					index += 1;
+				}
+
+				if (this.textIsRowEnding(statementText[index])) {
+					break;
 				}
 
 				let date = statementText[index],
@@ -37,7 +40,7 @@ export default class StatementParser {
 		let index = -1;
 
 		for (let i = searchFrom; i < statementText.length; i++) {
-			if (statementText[i] == "Transactions" &&
+			if ((statementText[i] == "Transactions" || statementText[i] == "Transactions (Continued)")&&
 				statementText[i + 1] == "Date" &&
 				statementText[i + 2] == "Transaction Details" &&
 				statementText[i + 3] == "Reference Number" &&
@@ -56,5 +59,9 @@ export default class StatementParser {
 
 	private parseCardNumber(text: string): string {
 		return text.match(/Card Number (\d\d\d\d \d\d\d\d \d\d\d\d \d\d\d\d)/)[1];
+	}
+
+	private textIsRowEnding(text: string): boolean {
+		return text === "(Continued next page)";
 	}
 }

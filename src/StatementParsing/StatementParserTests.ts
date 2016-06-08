@@ -25,7 +25,7 @@ describe("StatementParser", () => {
 					"ABCDEFG",
 					"12.34",
 					"11111111111111111111111"
-				];
+				]);
 			let target = new StatementParser();
 
 			let expected = [
@@ -59,13 +59,51 @@ describe("StatementParser", () => {
 
 			expect(actual).toEqual(expected);
 		});
+
+		it("parses items across separate pages", () => {
+			let input = transactionsHeader
+				.concat([
+					"Card Number 0000 0000 0000 0000",
+					"May 01",
+					"ABCDEFG",
+					"12.34",
+					"11111111111111111111111"
+				])
+				.concat(pageEnding)
+				.concat(transactionsContinuedHeader)
+				.concat([
+					"May 02",
+					"HIJKLMN",
+					"56.78",
+					"11111111111111111111112"
+				]);
+			let target = new StatementParser();
+
+			let expected = [
+				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "12.34", "11111111111111111111111"),
+				new StatementItem("0000 0000 0000 0000", "May 02", "HIJKLMN", "56.78", "11111111111111111111112")
+			];
+			let actual = target.Parse(input);
+
+			expect(actual).toEqual(expected);
+		});
 	});
 });
 
-var transactionsHeader = [
+let transactionsHeader = [
 	"Transactions",
 	"Date",
 	"Transaction Details",
 	"Reference Number",
 	"Amount"
+];
+let transactionsContinuedHeader = [
+	"Transactions (Continued)",
+	"Date",
+	"Transaction Details",
+	"Reference Number",
+	"Amount"
+];
+let pageEnding = [
+	"(Continued next page)"
 ];
