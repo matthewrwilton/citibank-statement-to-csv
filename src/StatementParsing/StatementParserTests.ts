@@ -60,6 +60,31 @@ describe("StatementParser", () => {
 			expect(actual).toEqual(expected);
 		});
 
+		it("parses items from multiple cards", () => {
+			let input = transactionsHeader
+				.concat([
+					"Card Number 0000 0000 0000 0000",
+					"May 01",
+					"ABCDEFG",
+					"12.34",
+					"11111111111111111111111",
+					"Card Number 1111 1111 1111 1111",
+					"May 02",
+					"HIJKLMN",
+					"56.78",
+					"11111111111111111111112"
+				]);
+			let target = new StatementParser();
+
+			let expected = [
+				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "12.34", "11111111111111111111111"),
+				new StatementItem("1111 1111 1111 1111", "May 02", "HIJKLMN", "56.78", "11111111111111111111112")
+			];
+			let actual = target.Parse(input);
+
+			expect(actual).toEqual(expected);
+		});
+
 		it("parses items across separate pages", () => {
 			let input = transactionsHeader
 				.concat([
