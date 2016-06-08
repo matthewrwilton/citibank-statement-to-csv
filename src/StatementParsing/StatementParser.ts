@@ -2,7 +2,7 @@ import StatementItem from "./StatementItem";
 
 export default class StatementParser {
 
-	public Parse(statementText: string[]): StatementItem[] {
+	public parse(statementText: string[]): StatementItem[] {
 		let items = [],
 			cardNumber = null,
 			startIndex = this.indexOfNextTransactionRow(statementText, 0);
@@ -23,8 +23,8 @@ export default class StatementParser {
 
 				let date = statementText[index],
 					transactionDetails = statementText[index + 1],
-					referenceNumber = statementText[index + 2],
-					amount = statementText[index + 3];
+					amount = statementText[index + 2],
+					referenceNumber = statementText[index + 3];
 
 				items.push(new StatementItem(cardNumber, date, transactionDetails, referenceNumber, amount));
 				index += 4;

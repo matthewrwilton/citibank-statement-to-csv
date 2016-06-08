@@ -4,7 +4,7 @@ import StatementParser from "./StatementParser";
 import StatementItem from "./StatementItem";
 
 describe("StatementParser", () => {
-	describe("Parse", () => {
+	describe("parse", () => {
 		it("returns an empty array when input is not a statement", () => {
 			let input = [
 				"This is not a statement."
@@ -12,7 +12,7 @@ describe("StatementParser", () => {
 			let target = new StatementParser();
 
 			let expected = [];
-			let actual = target.Parse(input);
+			let actual = target.parse(input);
 
 			expect(actual).toEqual(expected);
 		});
@@ -29,9 +29,9 @@ describe("StatementParser", () => {
 			let target = new StatementParser();
 
 			let expected = [
-				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "12.34", "11111111111111111111111")
+				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "11111111111111111111111", "12.34")
 			];
-			let actual = target.Parse(input);
+			let actual = target.parse(input);
 
 			expect(actual).toEqual(expected);
 		});
@@ -52,10 +52,10 @@ describe("StatementParser", () => {
 			let target = new StatementParser();
 
 			let expected = [
-				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "12.34", "11111111111111111111111"),
-				new StatementItem("0000 0000 0000 0000", "May 02", "HIJKLMN", "56.78", "11111111111111111111112")
+				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "11111111111111111111111", "12.34"),
+				new StatementItem("0000 0000 0000 0000", "May 02", "HIJKLMN", "11111111111111111111112", "56.78")
 			];
-			let actual = target.Parse(input);
+			let actual = target.parse(input);
 
 			expect(actual).toEqual(expected);
 		});
@@ -77,10 +77,10 @@ describe("StatementParser", () => {
 			let target = new StatementParser();
 
 			let expected = [
-				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "12.34", "11111111111111111111111"),
-				new StatementItem("1111 1111 1111 1111", "May 02", "HIJKLMN", "56.78", "11111111111111111111112")
+				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "11111111111111111111111", "12.34"),
+				new StatementItem("1111 1111 1111 1111", "May 02", "HIJKLMN", "11111111111111111111112", "56.78")
 			];
-			let actual = target.Parse(input);
+			let actual = target.parse(input);
 
 			expect(actual).toEqual(expected);
 		});
@@ -105,10 +105,10 @@ describe("StatementParser", () => {
 			let target = new StatementParser();
 
 			let expected = [
-				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "12.34", "11111111111111111111111"),
-				new StatementItem("0000 0000 0000 0000", "May 02", "HIJKLMN", "56.78", "11111111111111111111112")
+				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "11111111111111111111111", "12.34"),
+				new StatementItem("0000 0000 0000 0000", "May 02", "HIJKLMN", "11111111111111111111112", "56.78")
 			];
-			let actual = target.Parse(input);
+			let actual = target.parse(input);
 
 			expect(actual).toEqual(expected);
 		});
@@ -137,18 +137,18 @@ describe("StatementParser", () => {
 					"Card Number 2222 2222 2222 2222",
 					"May 04",
 					"RSTUV",
-					"10000",
+					"10000"
 					"11111111111111111111114"
 				]);
 			let target = new StatementParser();
 
 			let expected = [
-				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "12.34", "11111111111111111111111"),
-				new StatementItem("1111 1111 1111 1111", "May 02", "HIJKLMN", "56.78", "11111111111111111111112"),
-				new StatementItem("1111 1111 1111 1111", "May 03", "OPQ", "99", "11111111111111111111113"),
-				new StatementItem("2222 2222 2222 2222", "May 04", "RSTUV", "10000", "11111111111111111111114")
+				new StatementItem("0000 0000 0000 0000", "May 01", "ABCDEFG", "11111111111111111111111", "12.34"),
+				new StatementItem("1111 1111 1111 1111", "May 02", "HIJKLMN", "11111111111111111111112", "56.78"),
+				new StatementItem("1111 1111 1111 1111", "May 03", "OPQ", "11111111111111111111113", "99"),
+				new StatementItem("2222 2222 2222 2222", "May 04", "RSTUV", "11111111111111111111114", "10000")
 			];
-			let actual = target.Parse(input);
+			let actual = target.parse(input);
 
 			expect(actual).toEqual(expected);
 		});
