@@ -1,5 +1,6 @@
 import * as $ from "jquery";
 import PdfScraper from "./PdfScraping/PdfScraper";
+import StatementParser from "./StatementParsing/StatementParser";
 
 const convertButtonSelector = "#convert-to-csv-button";
 const filePickerSelector = "#statement-file-picker";
@@ -18,38 +19,8 @@ $(convertButtonSelector).click(() => {
     pdfFileLocalUrls.forEach(localFileUrl => {
         let pdfTextPromise = pdfScraper.scrapeText(localFileUrl, password)
             .then(text => {
-                console.log(text);
+                let statementParser = new StatementParser(),
+                    statementItems = statementParser.parse(text);
             });
     });
 });
-
-/*
- * 
- *
- *
- * // load PDF file & extract text layer
- * var pdfReader = new PdfReader();
- * pdfReader.read().then(function (pdf) {
- *
- *   // parse text layer to extract statement items
- *   var statementParser = new StatementParser();
- *   statementParser.parse(pdf);
- * });
- *
- * save statement items as CSV
- *
- * class StatementItem {
- *     cardNumber: string;
- *     date: string;
- *     description: string;
- *     amount: string;
- * }
- *
- * class StatementParser {
- *     public parse(statementText: HTMLElement[]): StatementItem[] {
- * 
- *     }
- * }
- *
- *
- */
