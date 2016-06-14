@@ -1,4 +1,4 @@
-import StatementItem from "./StatementItem";
+import StatementItem from "./../StatementItem";
 
 export default class StatementParser {
 

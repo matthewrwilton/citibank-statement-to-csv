@@ -1,6 +1,6 @@
 import * as $ from "jquery";
 import PdfScraper from "./PdfScraping/PdfScraper";
-import StatementParser from "./StatementParsing/StatementParser";
+import StatementParser from "./Statements/Parsing/StatementParser";
 
 const convertButtonSelector = "#convert-to-csv-button";
 const filePickerSelector = "#statement-file-picker";

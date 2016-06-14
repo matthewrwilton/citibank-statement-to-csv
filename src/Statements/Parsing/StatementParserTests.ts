@@ -1,7 +1,7 @@
-/// <reference path="../../typings/jasmine/jasmine.d.ts" />
+/// <reference path="../../../typings/jasmine/jasmine.d.ts" />
 
 import StatementParser from "./StatementParser";
-import StatementItem from "./StatementItem";
+import StatementItem from "./../StatementItem";
 
 describe("StatementParser", () => {
 	describe("parse", () => {
@@ -137,7 +137,7 @@ describe("StatementParser", () => {
 					"Card Number 2222 2222 2222 2222",
 					"May 04",
 					"RSTUV",
-					"10000"
+					"10000",
 					"11111111111111111111114"
 				]);
 			let target = new StatementParser();
