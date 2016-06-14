@@ -1,5 +1,6 @@
 import * as $ from "jquery";
 import PdfScraper from "./PdfScraping/PdfScraper";
+import CsvConverter from "./Statements/Converting/CsvConverter";
 import StatementParser from "./Statements/Parsing/StatementParser";
 
 const convertButtonSelector = "#convert-to-csv-button";
@@ -18,9 +19,16 @@ $(convertButtonSelector).click(() => {
     let pdfScraper = new PdfScraper();
     pdfFileLocalUrls.forEach(localFileUrl => {
         let pdfTextPromise = pdfScraper.scrapeText(localFileUrl, password)
-            .then(text => {
-                let statementParser = new StatementParser(),
-                    statementItems = statementParser.parse(text);
-            });
+            .then(pdfText => {
+                let statementParser = new StatementParser();
+                return statementParser.parse(pdfText);
+            })
+            .then(statementItems => {
+                let csvConverter = new CsvConverter();
+                return csvConverter.convert(statementItems);
+            })
+            .then(csvLines => {
+                
+            })
     });
 });
