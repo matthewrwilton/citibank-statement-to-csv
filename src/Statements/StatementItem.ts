@@ -4,6 +4,7 @@ export default class StatementItem {
 		public date: string,
 		public transactionDetails: string,
 		public referenceNumber: string,
-		public amount: string) {
+		public amount: string,
+		public foreignCurrencyAmount: string) {
     }
 }

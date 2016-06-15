@@ -17,17 +17,29 @@ export default class StatementParser {
 					index += 1;
 				}
 
-				if (this.textIsRowEnding(statementText[index])) {
+				if (this.textIsInternationTransanctionFee(statementText[index])) {
+					index += 1;
+				}
+
+				if (this.textIsRowEnding(statementText[index]) ||
+					this.textIsTransactionsEnd(statementText[index])) {
 					break;
 				}
 
 				let date = statementText[index],
 					transactionDetails = statementText[index + 1],
 					amount = statementText[index + 2],
-					referenceNumber = statementText[index + 3];
-
-				items.push(new StatementItem(cardNumber, date, transactionDetails, referenceNumber, amount));
+					referenceNumber = statementText[index + 3],
+					foreignCurrencyAmount = "";
+				
 				index += 4;
+
+				if (this.textIsForeignCurrencyAmount(statementText[index])) {
+					foreignCurrencyAmount = statementText[index];
+					index += 1;
+				}
+
+				items.push(new StatementItem(cardNumber, date, transactionDetails, referenceNumber, amount, foreignCurrencyAmount));
 			}
 
 			startIndex = this.indexOfNextTransactionRow(statementText, index);
@@ -63,5 +75,17 @@ export default class StatementParser {
 
 	private textIsRowEnding(text: string): boolean {
 		return text === "(Continued next page)";
+	}
+
+	private textIsTransactionsEnd(text: string): boolean {
+		return text === "Closing Balance";
+	}
+
+	private textIsForeignCurrencyAmount(text: string): boolean {
+		return text.startsWith("Foreign Amount ");
+	}
+
+	private textIsInternationTransanctionFee(text: string): boolean {
+		return /AUD (\d)*.\d\d includes International Transaction fee AUD (\d)*.\d\d/.test(text);
 	}
 }

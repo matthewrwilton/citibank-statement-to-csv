@@ -4,7 +4,7 @@ export default class CsvConverter {
 
 	public convert(statementItems: StatementItem[]): string[] {
 		return statementItems.map(item => {
-			return `\"${item.cardNumber}\"\t\"${item.date}\"\t\"${item.transactionDetails}\"\t\"${item.referenceNumber}\"\t\"${item.amount}\"`;
+			return `\"${item.cardNumber}\"\t\"${item.date}\"\t\"${item.transactionDetails}\"\t\"${item.referenceNumber}\"\t\"${item.amount}\"\t\"${item.foreignCurrencyAmount}\"`;
 		});
 	}
 }
