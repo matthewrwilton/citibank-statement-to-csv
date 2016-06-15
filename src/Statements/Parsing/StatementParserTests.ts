@@ -1,5 +1,3 @@
-/// <reference path="../../../typings/jasmine/jasmine.d.ts" />
-
 import StatementParser from "./StatementParser";
 import StatementItem from "./../StatementItem";
 
