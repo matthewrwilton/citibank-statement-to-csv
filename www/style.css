@@ -9,3 +9,6 @@
 .convert-button-container {
 	text-align:center;
 }
+.password-section {
+	display: none;
+}

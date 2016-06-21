@@ -9,8 +9,9 @@
 			<h1>Convert Citibank credit card statements to CSV</h1>
 			<p>Choose statement to upload</p>
 			<input id="statement-file-picker" type="file" class="file-picker" accept=".pdf" multiple="true">
-			<p>Statement password</p>
-			<input id="statement-password" type="password">
+			<div id="password-section" class="password-section">
+				<label id="password-input-label" for="statement-password"></label><input id="statement-password" type="password">
+			</div>
 			<p class="convert-button-container">
 				<button id="convert-to-csv-button" class="convert-button">Convert to CSV</button>
 			</p>
