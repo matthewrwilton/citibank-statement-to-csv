@@ -54,3 +54,13 @@ h1 {
 	margin:1.34em 0;
 	padding:2rem;
 }
+.credits {
+	color:#fff;
+	font-size:14px;
+	margin-top:10em;
+	opacity:.7;
+}
+.credits a {
+	color:#fff;
+	font-size:14px;
+}
