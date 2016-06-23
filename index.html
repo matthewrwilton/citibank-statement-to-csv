@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Citibank Statement to CSV</title>
+		<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+		<link href="style.css" rel="stylesheet" title="Page Styles">
+	</head>
+	<body>
+		<div class="top-page-margin">
+			<div class="content">
+				<h1>Convert Citibank credit card statements to CSV</h1>
+
+				<div class="password-section" id="password-section">
+					<label class="password-input-label" id="password-input-label" for="password-input"></label>
+					<input class="password-input" id="password-input" type="password">
+					<label class="retry-button" id="retry-button">RETRY</label>
+				</div>
+
+				<input class="file-picker-input" id="statement-file-picker" type="file" accept=".pdf">
+				<label class="file-picker-label" id="file-picker-label" for="statement-file-picker">SELECT STATEMENT</label>
+
+				<div class="credits">
+					<p>
+						<a href="https://github.com/matthewrwilton/csv-citibank-statement">View source on GitHub</a>
+					</p>
+					<p>
+						Built with: 
+						<a href="https://www.typescriptlang.org/">TypeScript</a> - 
+						<a href="https://www.npmjs.com/">npm</a> - 
+						<a href="https://webpack.github.io/">webpack</a> - 
+						<a href="https://mozilla.github.io/pdf.js/">PDF.js</a> - 
+						<a href="https://karma-runner.github.io/0.13/index.html">karma</a> - 
+						<a href="http://jasmine.github.io/">Jasmine</a>
+						<br/><br/>
+						and the following packages:
+						<a href="https://www.npmjs.com/package/entry-loader">entry-loader</a> - 
+						<a href="https://www.npmjs.com/package/karma-chrome-launcher">karma-chrome-launcher</a> - 
+						<a href="https://www.npmjs.com/package/karma-cli">karma-cli</a> - 
+						<a href="https://www.npmjs.com/package/karma-jasmine">karma-jasmine</a> - 
+						<a href="https://www.npmjs.com/package/karma-sourcemap-loader">karma-sourcemap-loader</a> - 
+						<a href="https://www.npmjs.com/package/karma-webpack">karma-webpack</a> - 
+						<a href="https://github.com/TypeStrong/ts-loader">ts-loader</a>
+						<br/><br/>
+						and TypeScript definition files via: 
+						<a href="https://github.com/DefinitelyTyped/tsd">tsd</a> and 
+						<a href="https://github.com/DefinitelyTyped/DefinitelyTyped">DefinitelyTyped</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<script src="https://code.jquery.com/jquery-2.2.1.min.js" type="text/javascript"></script>
+		<script src="bundle.js" type="text/javascript"></script>
+	</body>
+</html>
