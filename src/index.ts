@@ -5,6 +5,7 @@ import StatementParser from "./Statements/Parsing/StatementParser";
 
 const retryButtonSelector = "#retry-button";
 const filePickerSelector = "#statement-file-picker";
+const filePickerLabelSelector = "#file-picker-label";
 const passwordSectionSelector = "#password-section";
 const passwordInputLabelSelector = "#password-input-label";
 const passwordInputSelector = "#password-input";
@@ -67,11 +68,13 @@ function clearAndHidePasswordInput() {
 
 function showPasswordRequiredError() {
     $(passwordInputLabelSelector).text("Statement password required");
+    $(filePickerLabelSelector).text("CHANGE STATEMENT");
     $(passwordSectionSelector).show();
 }
 
 function showIncorrectPasswordError() {
     $(passwordInputLabelSelector).text("Incorrect password");
     (<HTMLInputElement>$(passwordInputSelector).get(0)).value = "";
+    $(filePickerLabelSelector).text("CHANGE STATEMENT");
     $(passwordSectionSelector).show();
 }

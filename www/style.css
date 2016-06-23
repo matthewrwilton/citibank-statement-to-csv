@@ -1,14 +1,56 @@
+html {
+	background-color:#039BE5;
+	color:#000;
+	font-family:"Roboto", sans-serif;
+	font-size: 14px;
+}
+h1 {
+	color:#fff;
+	font-weight:normal;
+}
+.top-page-margin {
+	margin-top:10%;
+}
 .content {
 	margin:0 auto;
-	max-width:800px;
+	max-width:43rem;
 	width:100%;
 }
-.file-picker {
-	width:100%;
+.file-picker-input {
+	display:none;
 }
-.retry-button-container {
-	text-align:center;
+.file-picker-label {
+	background-color:#4FC3F7;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	display:inline-block;
+	cursor:pointer;
+	padding:2rem;
 }
 .password-section {
 	display: none;
+}
+.password-input-label {
+	background-color:#EF9A9A;
+	display:block;
+	font-size: 16px;
+	margin-top:1.34em;
+	padding:1em;
+}
+.password-input {
+	border:none;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	display:block;
+	font-family:"Roboto", sans-serif;
+	font-size:16px;
+	height:45px;
+	margin-top:1.34em;
+	padding:0 45px 0 15px;
+}
+.retry-button {
+	background-color:#4FC3F7;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	display:inline-block;
+	cursor:pointer;
+	margin:1.34em 0;
+	padding:2rem;
 }

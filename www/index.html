@@ -2,18 +2,22 @@
 <html lang="en">
 	<head>
 		<title>Citibank Statement to CSV</title>
+		<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 		<link href="style.css" rel="stylesheet" title="Page Styles">
 	</head>
 	<body>
-		<div class="content">
-			<h1>Convert Citibank credit card statements to CSV</h1>
-			<p>Choose statement to upload</p>
-			<input id="statement-file-picker" type="file" class="file-picker" accept=".pdf">
-			<div id="password-section" class="password-section">
-				<label id="password-input-label" for="password-input"></label><input id="password-input" type="password">
-				<p class="retry-button-container">
-					<button id="retry-button" class="retry-button">Retry</button>
-				</p>
+		<div class="top-page-margin">
+			<div class="content">
+				<h1>Convert Citibank credit card statements to CSV</h1>
+
+				<div class="password-section" id="password-section">
+					<label class="password-input-label" id="password-input-label" for="password-input"></label>
+					<input class="password-input" id="password-input" type="password">
+					<label class="retry-button" id="retry-button">RETRY</label>
+				</div>
+
+				<input class="file-picker-input" id="statement-file-picker" type="file" accept=".pdf">
+				<label class="file-picker-label" id="file-picker-label" for="statement-file-picker">SELECT STATEMENT</label>
 			</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-2.2.1.min.js" type="text/javascript"></script>
