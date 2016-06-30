@@ -1,18 +1,20 @@
-# WIP
-This project is work in progress.
+# Convert Citibank credit card statements to CSV
 
-# csv-citibank-statement
-Parse a Citibank credit card statement into a tab separated CSV file.
-
-## Backstory
-I track my credit card charges, but PDF files are terrible for extracting data from. Like any good (lazy) developer I looked to auomate my process of copying the data and running it through regular expressions before pasting it into a spreadsheet (even if it turns out like [xkcd 1319](http://xkcd.com/1319/)).
+## Purpose
+Citibank credit card statements come as PDFs, which is not a great format for data. This application extracts the statement data from the PDF and creates a CSV file of all the transactions.
 
 ## How it works
-In the root directory of the repository.
+It runs entirely in your browser, no data is sent over the internet. Choose the PDF statement and your browser will save a CSV copy of the statement to your PC.
 
-    1. Run "npm run-script build" to build the application using webpack.
-    2. Open www/index.html in a web browser.
-    3. Choose a PDF file to convert. The conversion occurs on the client using pdf.js.
+## To use
+Visit http://matthewrwilton.github.io/csv-citibank-statement/
 
-# Design decisions
-- This is targeted for modern browsers and compiles to ES6. No transpiling to ES5.
+## Limitations
+The application uses modern browser functionality and will not work in older out of date browsers. Use Chrome.
+
+## Development
+Clone the repository. Checkout the master branch.
+
+Running "npm run-script build" or "webpack" will build the application using webpack. To build on changes run "npm run-script watch".
+
+Tests can be run with "npm test". For a continuous test runner use "npm run-script test-debug".
