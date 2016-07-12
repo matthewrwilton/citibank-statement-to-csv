@@ -7,7 +7,7 @@ Citibank credit card statements come as PDFs, which is not a great format for da
 It runs entirely in your browser, no data is sent over the internet. Choose the PDF statement and your browser will save a CSV copy of the statement to your PC.
 
 ## To use
-Visit http://matthewrwilton.github.io/csv-citibank-statement/
+Visit http://matthewrwilton.github.io/citibank-statement-to-csv/
 
 ## Limitations
 The application uses modern browser functionality and will not work in older out of date browsers. Use Chrome.
